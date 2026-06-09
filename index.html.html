@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Fernandinha ❤️</title>
+<style>
+body{
+margin:0;font-family:Georgia,serif;
+background:linear-gradient(#071326,#0d1b3a,#000);
+color:#fff;overflow-x:hidden;
+}
+.stars{
+position:fixed;inset:0;
+background-image:radial-gradient(white 1px, transparent 1px);
+background-size:40px 40px;
+opacity:.35;z-index:-1;
+animation:twinkle 6s infinite alternate;
+}
+@keyframes twinkle{from{opacity:.2}to{opacity:.5}}
+.center{display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.card{
+background:rgba(255,255,255,.08);
+padding:30px;border-radius:20px;
+max-width:850px;width:100%;
+backdrop-filter:blur(8px);
+box-shadow:0 0 25px rgba(255,255,255,.15);
+}
+input,button{
+padding:12px;border-radius:10px;border:none
+}
+button{cursor:pointer;background:#ff5c8a;color:#fff}
+.hidden{display:none}
+.paper{
+background:#f8f1df;color:#3a2d1b;
+padding:30px;border-radius:12px;
+line-height:1.8;white-space:pre-wrap;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+min-height:300px;
+}
+.music{
+display:inline-block;margin-top:20px;
+padding:12px 18px;background:#ff5c8a;
+color:white;text-decoration:none;border-radius:10px;
+}
+.final{
+margin-top:25px;text-align:center;
+font-size:1.2em;color:#ffd6e0;
+}
+.heart{
+position:fixed;bottom:-20px;
+animation:rise 8s linear forwards;
+}
+@keyframes rise{
+to{transform:translateY(-110vh);opacity:0}
+}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<div class="center">
+<div class="card" id="login">
+<h1>❤️ Oi, Loirinha...</h1>
+<p>Se você encontrou isso, encontrou algo especial.</p>
+<input type="password" id="senha" placeholder="Digite a senha">
+<button onclick="entrar()">Entrar</button>
+<p id="erro"></p>
+</div>
+
+<div class="card hidden" id="conteudo">
+<h1>💌 Para Fernandinha</h1>
+<div class="paper" id="textoCarta"></div>
+
+<a class="music" target="_blank"
+href="https://www.youtube.com/results?search_query=Amo+Noite+e+Dia+Jorge+e+Mateus">
+🎵 Ouça a música que me faz lembrar da gente
+</a>
+
+<div class="final">
+❤️ Espero que tenha gostado da surpresa ❤️
+</div>
+</div>
+</div>
+
+<script>
+const carta=`Fernandinha,
+
+Que bom que você conseguiu acessar isso. (Tomara que seja você mesmo kkk.)
+
+Pensei em fazer algo diferente, algo que talvez ninguém tenha feito por você (acho difícil alguém ter feito 😌). Independente do que aconteça entre nós, eu queria deixar registrado o que sinto e fazer você lembrar de mim quando ler isso.
+
+A verdade é que eu fiquei pensando muito em como escrever isso. Eu dei uma enrolada no começo porque sou péssimo com essas coisas e nunca fui muito bom em colocar meus sentimentos em palavras. Mas mesmo assim eu queria encontrar uma forma de te mostrar o quanto gosto de você e o quanto estou disposto a fazer dar certo entre a gente.
+
+Loirinha, é muito difícil pra mim dizer tudo isso. Mas desde aquela época em que a gente estava “juntos”, você ficou marcada em mim de um jeito que eu não sei explicar.
+
+Mesmo assim, estar com você foi algo especial. Algo que nunca consegui sentir por outra pessoa.
+
+E foi quando vi você seguindo sua vida que percebi os meus sentimentos por você.
+
+Sempre foi você que eu quis, e sempre foi você que eu queria comigo.
+
+Talvez este não seja o momento certo para você. Talvez você ainda não esteja pronta para algo sério, e eu respeito isso.
+
+Só quero que você saiba que meus sentimentos são verdadeiros.
+
+E, se for preciso, eu quero esperar o seu tempo.
+
+Não porque me sinto obrigado, mas porque você vale a pena para mim.
+
+Independentemente de qualquer coisa, você continua sendo alguém muito importante na minha vida.
+
+Espero que essa carta consiga mostrar pelo menos um pouco daquilo que às vezes eu não consigo dizer olhando nos seus olhos.
+
+Com carinho,
+
+Hiago ❤️`;
+
+function entrar(){
+ if(document.getElementById('senha').value==='7'){
+   document.getElementById('login').classList.add('hidden');
+   document.getElementById('conteudo').classList.remove('hidden');
+   escrever();
+   setInterval(coracao,700);
+ }else{
+   document.getElementById('erro').innerText='Senha incorreta ❤️';
+ }
+}
+
+function escrever(){
+ let i=0;
+ const el=document.getElementById('textoCarta');
+ function t(){
+   if(i<carta.length){
+     el.textContent += carta.charAt(i);
+     i++;
+     setTimeout(t,20);
+   }
+ }
+ t();
+}
+
+function coracao(){
+ const h=document.createElement('div');
+ h.className='heart';
+ h.innerHTML='❤️';
+ h.style.left=Math.random()*100+'vw';
+ h.style.fontSize=(20+Math.random()*20)+'px';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),8000);
+}
+</script>
+</body>
+</html>
